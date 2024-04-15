@@ -9,7 +9,7 @@ async function login() {
         },
         body: JSON.stringify({
           username: username,
-          password: hashedPassword
+          password: password
         })
       })
 }
