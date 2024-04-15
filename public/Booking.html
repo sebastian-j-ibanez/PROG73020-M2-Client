@@ -12,20 +12,70 @@
 
 
 <body>
-    <div class="container" style="height: 100dvh;">
-        <div class="row align-items-center" style="height: 100dvh;">
-            <div class="form-signin w-100 col m-auto" style="max-width: 330px;">
-                <h2 style="text-align: center;" class="mb-5">App Name</h2>
-                <h1>Sign In</h1>
-                <div class="mb-2">
-                    <label for="exampleInputEmail1" class="form-label">Username</label>
-                    <input type="email" class="form-control" id="usernameInput" aria-describedby="emailHelp">
+    <div class="container p-5" style="height: 100dvh;">
+        <a href="#" class="link-secondary">&#60; Back to Cars</a>
+        <div class="container pb-5" style="height: 100%;">
+            <div class="row h-100" style="height: 100%;">
+                <!-- car info -->
+                <div class="col">
+                    <h3>Car</h3>
+                    <!-- image here -->
+                    <h3 id="carName">Car Name</h3>
+                    <div>
+                        <h4>Details</h4>
+                        <p id="carPrice"></p>
+                    </div>
+                    <div>
+                        <p>Engine Type</p>
+                        <p id="engType"></p>
+                    </div>
+                    <div>
+                        <p>Make</p>
+                        <p id="carMake"></p>
+                    </div>
+                    <div>
+                        <p>Seats</p>
+                        <p id="seatNum"></p>
+                    </div>
+                    <div>
+                        <p>License Plate</p>
+                        <p id="plateNum"></p>
+                    </div>
                 </div>
-                <div class="mb-5">
-                    <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="passwordInput">
+                <div class="vr p-0" style="height:100%;"></div>
+                <!-- booking info -->
+                <div class="col">
+                    <h3>Booking</h3>
+                    <div>
+                        <h4>1. Pick the date range you would like to book for.</h4>
+                        <!-- date pickers here :meowsweats -->
+                        <input type="date">
+                        <h5>To</h5>
+                        <!-- date picker -->
+                        <input type="date">
+                    </div>
+                    <div class="mt-5">
+                        <h4>Confirm Details</h4>
+                        <div class="w-100" style="display: flex; justify-content: space-between;">
+                            <p>Start Date:</p>
+                            <p id="confirmStartDate">test</p>
+                        </div>
+                        <div class="w-100" style="display: flex; justify-content: space-between;">
+                            <p>End Date:</p>
+                            <p id="confirmEndDate">test</p>
+                        </div>
+                        <div class="w-100" style="display: flex; justify-content: space-between;">
+                            <p>Duration:</p>
+                            <p id="confirmDuration">test</p>
+                        </div>
+
+                        <div class="w-100 mt-5" style="display: flex; justify-content: space-between;">
+                            <h4>Total:</h4>
+                            <h4 id="confirmTotalCost">test</h4>
+                        </div>
+                    </div>
+                    <button class="btn btn-success w-100">Book</button>
                 </div>
-                <button type="submit" class="btn btn-success w-100" onclick="login()">Sign In</button>
             </div>
         </div>
     </div>
