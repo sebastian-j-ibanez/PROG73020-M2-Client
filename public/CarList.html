@@ -14,19 +14,26 @@
                 <div class="row">
                     <div class="col-auto">
                         <div class="dropdown" id="seats-dropdown">
-                            <button class="btn btn-secondary btn-sm dropdown-toggle" id="seats-dropdown-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Seats
-                            </button>
-                            <ul class="dropdown-menu" id="seats-dropdown-menu"></ul>
+                            <button class="btn btn-secondary btn-sm dropdown-toggle" id="seats-dropdown-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">Seats</button>
+                            <ul class="dropdown-menu" id="seats-dropdown-menu">
+                                <li><a class="dropdown-item seats-dropdown-item" href="#">All</a></li>
+                            </ul>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col-auto">
                         <div class="dropdown" id="engine-dropdown">
-                            <button class="btn btn-secondary btn-sm dropdown-toggle" id="engine-dropdown-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Engine Type
-                            </button>
-                            <ul class="dropdown-menu" id="engine-dropdown-menu"></ul>
+                            <button class="btn btn-secondary btn-sm dropdown-toggle" id="engine-dropdown-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">Engine Type</button>
+                            <ul class="dropdown-menu" id="engine-dropdown-menu">
+                                <li><a class="dropdown-item engine-dropdown-item" href="#">All</a></li>
+                            </ul>
                         </div>
+                    </div>
+                    <div class="col-auto">
+                        <div class="btn btn-secondary btn-sm" id="filter-btn">Apply Filters</div>
+                    </div>
+
+                    <div class="col-auto">
+                        <div class="btn btn-secondary btn-sm" id="reset-btn">Reset Filters</div>
                     </div>
                 </div>
             </div>
