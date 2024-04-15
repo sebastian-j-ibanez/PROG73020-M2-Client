@@ -9,6 +9,13 @@ app.use(express.static('public'));
 app.get("/", function(req, res) {
     const page = '/public/Login.html';
     res.sendFile(__dirname + page);
+    console.log(`SERVE: ${page}`);
+});
+
+app.get("/cars", function(req, res) {
+    const page = '/public/CarList.html';
+    res.sendFile(__dirname + page);
+    console.log(`SERVE: ${page}`);
 });
 
 const port = 8000;

@@ -9,6 +9,7 @@
   "author": "sebastian-j-ibanez",
   "license": "ISC",
   "dependencies": {
+    "@types/jquery": "^3.5.29",
     "express": "^4.19.2"
   }
 }
