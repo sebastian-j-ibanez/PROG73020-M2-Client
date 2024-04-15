@@ -15,9 +15,9 @@
     <div class="container p-5" style="height: 100dvh;">
         <a href="#" class="link-secondary">&#60; Back to Cars</a>
         <div class="container pb-5" style="height: 100%;">
-            <div class="row h-100" style="height: 100%;">
+            <div class="row" style="height: max-content;">
                 <!-- car info -->
-                <div class="col">
+                <div class="col m-3">
                     <h3>Car</h3>
                     <!-- image here -->
                     <h3 id="carName">Car Name</h3>
@@ -42,12 +42,13 @@
                         <p id="plateNum"></p>
                     </div>
                 </div>
-                <div class="vr p-0" style="height:100%;"></div>
+                <div class="vr p-0"></div>
                 <!-- booking info -->
-                <div class="col">
-                    <h3>Booking</h3>
-                    <div>
-                        <h4>1. Pick the date range you would like to book for.</h4>
+                <div class="col m-3" >
+                    <h3 class="mb-4">Booking</h3>
+                    <h4 class="mb-3">1. Pick the date range you would like to book for.</h4>
+
+                    <div style="display: flex; flex-direction: column; margin: auto; align-items: center;">
                         <!-- date pickers here :meowsweats -->
                         <input type="date">
                         <h5>To</h5>
@@ -55,7 +56,7 @@
                         <input type="date">
                     </div>
                     <div class="mt-5">
-                        <h4>Confirm Details</h4>
+                        <h4>2. Confirm Details</h4>
                         <div class="w-100" style="display: flex; justify-content: space-between;">
                             <p>Start Date:</p>
                             <p id="confirmStartDate">test</p>
