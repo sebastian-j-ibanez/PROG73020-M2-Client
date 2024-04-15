@@ -6,36 +6,36 @@ let cars = [
         make: 'Hyundai',
         model: 'IONIQ 5',
         year: 2023,
-        engine: 'Electric',
-        seats: 5
+        fuelttype: 'Electric',
+        numSeats: 5
     },
     {
         make: 'Toyota',
         model: 'Prius C',
         year: 2016,
-        engine: 'Hybrid',
-        seats: 5
+        fuelttype: 'Hybrid',
+        numSeats: 5
     },
     {
         make: 'Kia',
         model: 'Rio',
         year: 2012,
-        engine: 'Petrol',
-        seats: 5
+        fuelttype: 'Petrol',
+        numSeats: 5
     },
     {
         make: 'Ford',
         model: 'F-150',
         year: 2018,
-        engine: 'Petrol',
-        seats: 5
+        fuelttype: 'Petrol',
+        numSeats: 5
     },
     {
         make: 'Volkswagen',
         model: 'id Buzz',
         year: 2024,
-        engine: 'Electric',
-        seats: 6
+        fuelttype: 'Electric',
+        numSeats: 6
     }
 ];
 
@@ -88,8 +88,8 @@ function PopulateCarCards(cars) {
         });
         let cardBody = $('<div>').addClass('card-body');
         let cardTitle = $('<h5>').addClass('card-title').text(`${car.make} ${car.model}`);
-        let cardSubtitle = $('<h6>').addClass('card-subtitle text-body-secondary').text(`${car.year} • ${car.engine}`);
-        let cardSeats = $('<h6>').addClass('card-subtitle text-body-secondary').text(`${car.seats} seats`);
+        let cardSubtitle = $('<h6>').addClass('card-subtitle text-body-secondary').text(`${car.year} • ${car.fuelttype}`);
+        let cardSeats = $('<h6>').addClass('card-subtitle text-body-secondary').text(`${car.numSeats} seats`);
         let cardAddBtn = $('<button>').addClass('btn btn-success btn-sm mt-2').text('Book Vehicle');
 
         // Append card to card container div.
@@ -108,9 +108,9 @@ let engineFilter = "";
 function PopulateSeatDropdown(cars) {
     let seatNums = [];
     cars.forEach(function(car) {
-        if (!seatNums.includes(car.seats)) {
+        if (!seatNums.includes(car.numSeats)) {
             // Add seat number to array. 
-            let seats = car.seats;
+            let seats = car.numSeats;
             seatNums.push(seats);
             
             // Create dropdown list item
@@ -129,9 +129,9 @@ function PopulateSeatDropdown(cars) {
 function PopulateEngineDropdown(cars) {
     let engines = [];
     cars.forEach(function(car) {
-        if (!engines.includes(car.engine)) {
+        if (!engines.includes(car.fuelttype)) {
             // Add engine to array.
-            let engine = car.engine;
+            let engine = car.fuelttype;
             engines.push(engine);
             
             // Create dropdown list item.
@@ -164,9 +164,9 @@ function FilterCars() {
         console.log('Filtering cars...');
         console.log(seatsFilter);
         console.log(engineFilter);
-        let filteredCars = cars.filter(car => car.seats === Number(seatsFilter));
+        let filteredCars = cars.filter(car => car.numSeats === Number(seatsFilter));
         console.log(filteredCars);
-        filteredCars = filteredCars.filter(car => car.engine === engineFilter);
+        filteredCars = filteredCars.filter(car => car.fuelttype === engineFilter);
         console.log(filteredCars);
         carCards.empty();
         PopulateCarCards(filteredCars);
