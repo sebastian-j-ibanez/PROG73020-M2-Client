@@ -17,7 +17,7 @@ const authChecker = function (req, res, next) {
     if (!authCookie && req.path != "/") {
         const status = 401;
         console.log(`RES: ${status}`);
-        res.status(status).send("Authentication required.");
+        res.status(status).sendFile(__dirname + "/public/AccessDenied.html");
     } else {
         next();
     }

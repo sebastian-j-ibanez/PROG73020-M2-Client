@@ -31,7 +31,7 @@ async function login() {
             console.log(json);
             console.log(userauth);
             setCookie("vitesse_userauth", userauth, "/");
-            
+            // Log login and redirect to cars page.
             console.log('Login successful...')
             $(`#signinMessages`).text(` `).hide()
             window.location.replace('http://localhost:8000/cars')
@@ -43,5 +43,6 @@ async function login() {
       })
       .catch(error => {
         console.log(error)
-    });
+        $('#signinMessages').text(`❌ Network error. Unable to sign-in.`).show()
+    }); 
 }
