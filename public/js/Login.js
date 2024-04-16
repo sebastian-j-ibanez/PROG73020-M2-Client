@@ -34,7 +34,7 @@ async function login() {
             
             console.log('Login successful...')
             $(`#signinMessages`).text(` `).hide()
-            window.location.replace('http://localhost:8000/car')
+            window.location.replace('http://localhost:8000/cars')
         } else {
             // Display error message.
             console.log(`Error. Login status: ${resp.status}`)

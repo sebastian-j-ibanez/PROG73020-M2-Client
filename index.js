@@ -14,7 +14,7 @@ const authChecker = function (req, res, next) {
     console.log("--------");
     console.log(`USER ID: ${authCookie}`);
     console.log(`REQ: ${req.path}`);
-    if (!authCookie && req.path != "/" && req.path != "/favicon.ico") {
+    if (!authCookie && req.path != "/") {
         const status = 401;
         console.log(`RES: ${status}`);
         res.status(status).send("Authentication required.");
