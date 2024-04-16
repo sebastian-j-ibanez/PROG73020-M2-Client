@@ -1,3 +1,11 @@
+function setCookie(name, value, path) {
+    let cookieString = `${name}=${value}`;
+    if (path) {
+        cookieString += `; path=${path}`;
+    }
+    document.cookie = cookieString;
+}
+
 async function login() {
     const username = $('#usernameInput').val()
     const password = $('#passwordInput').val()
@@ -15,11 +23,18 @@ async function login() {
           password: password
         })
       })
-      .then(resp =>  {
+      .then(async resp =>  {
         if (resp.ok) {
-            // Redirect to car list page.
+            // Set userauth cookie.
+            let json = await resp.json();
+            let userauth = json.userId;
+            console.log(json);
+            console.log(userauth);
+            setCookie("vitesse_userauth", userauth, "/");
+            
             console.log('Login successful...')
             $(`#signinMessages`).text(` `).hide()
+            window.location.replace('http://localhost:8000/car')
         } else {
             // Display error message.
             console.log(`Error. Login status: ${resp.status}`)
