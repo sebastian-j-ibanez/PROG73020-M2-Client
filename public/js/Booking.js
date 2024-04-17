@@ -4,6 +4,7 @@ async function loadCar() {
     console.log(car);
     document.getElementById("carName").innerHTML = car.model;
     document.getElementById("carPrice").innerHTML = `$${car.costperday} Per Day`;
+    document.getElementById("carPrice").setAttribute('price', car.costperday);
     document.getElementById("engType").innerHTML = car.fueltype;
     document.getElementById("carMake").innerHTML = car.make;
     document.getElementById("seatNum").innerHTML = car.numSeats;
@@ -29,6 +30,8 @@ function showDatePicker(button) {
     calendar.setAttribute('year', year);
 
     populateDatePicker(calendar);
+
+    calendar.style.display = 'inline-block';
 }
 
 function populateDatePicker(dp) {
@@ -73,6 +76,7 @@ function populateDatePicker(dp) {
                 detail: new Date(year, month - 1, day) // Provide the Date object as the event data
             });
             dp.dispatchEvent(dateEvent);
+            dp.style.display = 'none';
         }
         dateArea.appendChild(btn);
     }
@@ -109,19 +113,24 @@ function decrementMonth(btn) {
 }
 
 function calculateCost() {
-    const startDate = new Date(document.getElementById('confirmStartDate').getAttribute('ts'));
-    const endDate = new Date(document.getElementById('confirmEndDate').getAttribute('ts'));
-    const price = document.getElementById('carPrice').innerHTML;
+    const startDate = new Date(parseInt(document.getElementById('confirmStartDate').getAttribute('ts')));
+    const endDate = new Date(parseInt(document.getElementById('confirmEndDate').getAttribute('ts')));
+    const price = parseInt(document.getElementById('carPrice').getAttribute('price'));
 
     console.log(startDate, endDate);
 
-    //guard
-    if (startDate == null || endDate == null) {
+    let duration = 1 + Math.round((endDate - startDate) / (1000 * 60 * 60 * 24));
+    let total = price * duration;
+
+    if (isNaN(duration)) {
         return;
     }
+    document.getElementById('confirmDuration').innerHTML = `${duration} Days`;
+    document.getElementById('confirmTotalCost').innerHTML = `$${total}`;
+}
 
-    // let duration = 
-    // let total = 
+async function createBooking() {
+    
 }
 
 function initEventHandlers() {
@@ -130,13 +139,13 @@ function initEventHandlers() {
 
     startDatePicker.addEventListener("dateEvent", function (e) {
         document.getElementById('confirmStartDate').setAttribute('ts', e.detail.getTime());
-        document.getElementById('confirmStartDate').innerHTML = e.detail;
+        document.getElementById('confirmStartDate').innerHTML = e.detail.toLocaleDateString();
 
         calculateCost();
     })
     endDatePicker.addEventListener("dateEvent", function (e) {
         document.getElementById('confirmEndDate').setAttribute('ts', e.detail.getTime());
-        document.getElementById('confirmEndDate').innerHTML = e.detail;
+        document.getElementById('confirmEndDate').innerHTML = e.detail.toLocaleDateString();
 
         calculateCost();
     })
