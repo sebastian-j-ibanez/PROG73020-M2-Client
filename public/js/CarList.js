@@ -1,6 +1,6 @@
-$(function(){
-    $("#header").load("Header.html"); 
-    });
+$(function () {
+    $("#header").load("Header.html");
+});
 
 console.log('CarList page loaded...');
 
@@ -35,7 +35,7 @@ getAllCars()
         function PopulateCarCards(cars) {
             // Loop through cars and create card with it's information.
             console.log(cars);
-            cars.forEach(function(car) {
+            cars.forEach(function (car) {
                 console.log(car);
                 let card = $('<div>').addClass('card m-2 col-md-4').css('width', '18rem');
                 let cardImage = $('<img>').addClass('card-img-top').attr({
@@ -45,14 +45,14 @@ getAllCars()
                 let cardTitle = $('<h5>').addClass('card-title').text(`${car.make} ${car.model}`);
                 let cardSubtitle = $('<h6>').addClass('card-subtitle text-body-secondary').text(`${car.year} • ${car.fueltype}`);
                 let cardSeats = $('<h6>').addClass('card-subtitle text-body-secondary').text(`${car.numSeats} seats`);
-                let cardAddBtn = $('<button>').addClass('btn btn-success btn-sm mt-2').text('Book Vehicle');
+                let cardAddBtn = $('<button>').addClass('btn btn-success btn-sm mt-2').text('Book Vehicle').on("click", function() { window.location.href = `/booking?car=${car.carID}` });
 
                 // Append card to card container div.
                 cardBody.append(cardTitle, cardSubtitle, cardSeats, cardAddBtn);
                 card.append(cardImage, cardBody);
                 $('#carCards').append(card);
             });
-            
+
 
         }
 
@@ -61,12 +61,12 @@ getAllCars()
         function PopulateSeatDropdown(cars) {
             let seatNums = [];
             $('#seats-dropdown-menu').empty();
-            cars.forEach(function(car) {
+            cars.forEach(function (car) {
                 if (!seatNums.includes(car.numSeats)) {
                     // Add seat number to array. 
                     let seats = car.numSeats;
                     seatNums.push(seats);
-                    
+
                     // Create dropdown list item
                     let listItem = $('<li>');
                     let itemButton = $('<a>').addClass('dropdown-item seats-dropdown-item').text(`${seats}`).attr('href', '#');
@@ -83,12 +83,12 @@ getAllCars()
         function PopulateEngineDropdown(cars) {
             let engines = [];
             $('#engine-dropdown-menu').empty();
-            cars.forEach(function(car) {
+            cars.forEach(function (car) {
                 if (!engines.includes(car.fueltype)) {
                     // Add engine to array.
                     let engine = car.fueltype;
                     engines.push(engine);
-                    
+
                     // Create dropdown list item.
                     let listItem = $('<li>');
                     let itemButton = $('<a>').addClass('dropdown-item engine-dropdown-item').text(`${engine}`).attr('href', '#');
@@ -102,12 +102,12 @@ getAllCars()
 
         // Binds the appropriate click events to the seats and engine dropdown items.
         function BindDropdownClickEvents() {
-            $('.seats-dropdown-item').on('click', function() {
+            $('.seats-dropdown-item').on('click', function () {
                 seatsFilter = $(this).text();
-                $("#seats-dropdown-btn" ).html(seatsFilter);
+                $("#seats-dropdown-btn").html(seatsFilter);
             });
-            
-            $('.engine-dropdown-item').on('click', function() {
+
+            $('.engine-dropdown-item').on('click', function () {
                 engineFilter = $(this).text();
                 $('#engine-dropdown-btn').html(engineFilter);
             });
@@ -130,14 +130,14 @@ getAllCars()
 
         // Bind FilterCars function to filter button. 
         function BindFilterClickEvent(cars) {
-            $('#filter-btn').on('click', function() {
+            $('#filter-btn').on('click', function () {
                 FilterCars(cars);
             });
         }
 
         // Binds click function for the reset filter button.
         function BindResetClickEvent() {
-            $('#reset-btn').on('click', function() {
+            $('#reset-btn').on('click', function () {
                 // Reset filter variables.
                 seatsFilter = "";
                 engineFilter = "";
