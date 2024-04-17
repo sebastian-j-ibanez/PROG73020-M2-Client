@@ -15,5 +15,6 @@ function deleteCookie(name, path) {
 function logout() {
     console.log("Logging out...");
     deleteCookie("vitesse_userauth", "/");
+    deleteCookie("vitesse_username", "/");
     window.location.replace("http://localhost:8000/");
 }
