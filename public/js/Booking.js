@@ -1,6 +1,10 @@
 async function loadCar() {
+    const url = new URL(window.location.href);
+    const queryString = url.search;
+    const params = new URLSearchParams(queryString);
+    const carId = params.get("car");
 
-    const car = await getCar(3);
+    const car = await getCar(carId);
     console.log(car);
     document.getElementById("carName").innerHTML = car.model;
     document.getElementById("carPrice").innerHTML = `$${car.costperday} Per Day`;
@@ -127,10 +131,51 @@ function calculateCost() {
     }
     document.getElementById('confirmDuration').innerHTML = `${duration} Days`;
     document.getElementById('confirmTotalCost').innerHTML = `$${total}`;
+    document.getElementById('confirmTotalCost').setAttribute('subtotal', total);
 }
 
+function getCookie(name) {
+    const cookies = document.cookie.split(';');
+    for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        if (cookie.startsWith(name + '=')) {
+            return cookie.substring(name.length + 1);
+        }
+    }
+    return null;
+}
+
+
 async function createBooking() {
-    
+
+    const url = new URL(window.location.href);
+    const queryString = url.search;
+    const params = new URLSearchParams(queryString);
+    const carId = params.get("car");
+
+    const startDate = new Date(parseInt(document.getElementById('confirmStartDate').getAttribute('ts'))).toISOString();
+    const endDate = new Date(parseInt(document.getElementById('confirmEndDate').getAttribute('ts'))).toISOString();
+
+    const sub = document.getElementById('confirmTotalCost').getAttribute('subtotal');
+    var payload = {
+        userId: getCookie('vitesse_userauth'),
+        CarID: carId,
+        startDate: startDate,
+        endDate: endDate,
+        subtotal: sub
+    };
+
+
+    await fetch(`https://localhost:7166/api/booking`,
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+        }).then(res => {
+            console.log(res.status)
+        })
 }
 
 function initEventHandlers() {
