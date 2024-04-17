@@ -9,8 +9,9 @@
   "author": "sebastian-j-ibanez",
   "license": "ISC",
   "dependencies": {
-    "cookie-parser": "^1.4.6",
     "@types/jquery": "^3.5.29",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
     "express": "^4.19.2"
   }
 }

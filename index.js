@@ -5,9 +5,12 @@ const express = require('express');
 const app = express();
 app.use(express.json());
 app.use(express.static('public'));
+// Set up cookie parser.
 const cookieParser = require('cookie-parser');
 app.use(cookieParser());
-
+// Set up cors.
+const cors = require('cors');
+app.use(cors());
 // Set up authChecker middleware. 
 const authChecker = function (req, res, next) {
     const authCookie = req.cookies.vitesse_userauth;
@@ -24,11 +27,10 @@ const authChecker = function (req, res, next) {
 };
 app.use(authChecker);
 
-
-// app.use(cors({
-//     origin: 'http://localhost:7166',
-//     credentials: true
-// }))
+app.use(cors({
+    origin: 'https://localhost:7166',
+    credentials: true
+}))
 
 // Login route.
 app.get("/", function(req, res) {
