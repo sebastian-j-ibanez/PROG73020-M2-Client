@@ -45,6 +45,12 @@ app.get("/cars", function(req, res) {
     console.log(`SERVE: ${page}`);
 });
 
+app.get("/booking", function(req, res) {
+    const page = '/public/Booking.html';
+    res.sendFile(__dirname + page);
+    console.log(`SERVE: ${page}`);
+});
+
 // Listen over specified port.
 const port = 8000;
 app.listen(port, function() {
