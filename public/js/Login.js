@@ -31,6 +31,7 @@ async function login() {
             console.log(json);
             console.log(userauth);
             setCookie("vitesse_userauth", userauth, "/");
+            setCookie("vitesse_username", username, "/")
             // Log login and redirect to cars page.
             console.log('Login successful...')
             $(`#signinMessages`).text(` `).hide()
