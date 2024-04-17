@@ -54,8 +54,8 @@
                     <div style="display: flex; flex-direction: column; margin: auto; align-items: center;">
                         <!-- date pickers here :meowsweats -->
 
-                        <button onclick="showDatePicker(this)">dd/mm/yy</button>
-                        <div class="datePicker" for="startDate" month="" year="">
+                        <button onclick="showDatePicker(this)" class="btn btn-success">Pick Start Date</button>
+                        <div class="datePicker" for="startDate" month="" year="" style="display: none;">
                             <!-- month picker -->
                             <div class="datePickerHeader">
                                 <button class="dateButton" onclick="decrementMonth(this)">
@@ -80,8 +80,8 @@
                             </div>
                         </div>
                         <h5>To</h5>
-                        <button onclick="showDatePicker(this)">dd/mm/yy</button>
-                        <div class="datePicker" for="endDate" month="" year="">
+                        <button onclick="showDatePicker(this)" class="btn btn-success">Pick End Date</button>
+                        <div class="datePicker" for="endDate" month="" year="" style="display: none;">
                             <!-- month picker -->
                             <div class="datePickerHeader">
                                 <button class="dateButton" onclick="decrementMonth(this)">
@@ -111,23 +111,23 @@
                         <h4>2. Confirm Details</h4>
                         <div class="w-100" style="display: flex; justify-content: space-between;">
                             <p>Start Date:</p>
-                            <p id="confirmStartDate">test</p>
+                            <p id="confirmStartDate"></p>
                         </div>
                         <div class="w-100" style="display: flex; justify-content: space-between;">
                             <p>End Date:</p>
-                            <p id="confirmEndDate">test</p>
+                            <p id="confirmEndDate"></p>
                         </div>
                         <div class="w-100" style="display: flex; justify-content: space-between;">
                             <p>Duration:</p>
-                            <p id="confirmDuration">test</p>
+                            <p id="confirmDuration"></p>
                         </div>
 
                         <div class="w-100 mt-5" style="display: flex; justify-content: space-between;">
                             <h4>Total:</h4>
-                            <h4 id="confirmTotalCost">test</h4>
+                            <h4 id="confirmTotalCost"></h4>
                         </div>
                     </div>
-                    <button class="btn btn-success w-100">Book</button>
+                    <button class="btn btn-success w-100" onclick="createBooking()">Book</button>
                 </div>
             </div>
         </div>
